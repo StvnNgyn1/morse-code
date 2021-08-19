@@ -4,8 +4,20 @@ public class Morse
     //Turn on/off LEDs with Global Variables
     static boolean turnRedLEDOn = false;
     static boolean turnGreenLEDOn = false;
+    int unit_delay = 250;
+    
+    public static void Encoder()//method called for encoder 
+    {
+    	System.out.println("Encoder Chosen");
+    }
+    
+    public static void Decoder()//method called for decoder
+    {
+    	System.out.println("Decoder Chosen");
+    }
+    
 	//Handle Exceptions
-	public static void main(String[] args) throws Exception
+    public static void main(String[] args) throws Exception
 	{
 		
 		//Create
@@ -30,6 +42,11 @@ public class Morse
 			public void onStateChange(DigitalInputStateChangeEvent e)
 			{
 				turnRedLEDOn = e.getState();
+				if(e.getState()) 
+				{
+					Decoder();
+				}
+				
 			}
 		});
 		//Event for green button
@@ -38,6 +55,10 @@ public class Morse
 			public void onStateChange(DigitalInputStateChangeEvent e)
 			{
 				turnGreenLEDOn = e.getState();
+				if(e.getState())
+				{
+				Encoder();
+				}
 			}			
 		});
 		
@@ -51,7 +72,6 @@ public class Morse
 		{
 			redLED.setState(turnRedLEDOn);
 			greenLED.setState(turnGreenLEDOn);
-			
-		}
-	}
-}
+		}//red for decoder, green for encoder
+	}//two separate methods for decoder, encoder
+}//use scanner to help encode
