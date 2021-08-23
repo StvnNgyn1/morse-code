@@ -1,7 +1,9 @@
 import com.phidget22.*;
 import java.util.Scanner;
 public class MorseEncoder {
+	//Global variable for greenLED
 	static DigitalOutput greenLED;
+	//Global integer for unit of delay.
 	static int delay = 250;
 	//Handle Exceptions
 	public static void main(String[] args) throws Exception
@@ -155,14 +157,18 @@ public class MorseEncoder {
 				Z();
 				System.out.print(" ");
 			}
-			else if (word.charAt(i) == ' ')//7 units of delay between words
+			if (word.charAt(i) == ' ')//7 units of delay between words
 			{
 				Thread.sleep(delay * 7);
+			}
+			else
+			{
+				Thread.sleep(delay * 3);//3 units between letters
 			}
 		}
 		
 	}
-	//Light instruction for a dot of morse code
+	//Light instruction for a dot of Morse code
 	public static void dot() throws Exception
 	{
 		System.out.print(".");
@@ -171,7 +177,7 @@ public class MorseEncoder {
 		greenLED.setState(false);
 		Thread.sleep(delay);
 	}
-	//Light instruction for a dash of morse code
+	//Light instruction for a dash of Morse code
 	public static void dash() throws Exception
 	{
 		System.out.print("-");
@@ -180,7 +186,7 @@ public class MorseEncoder {
 		greenLED.setState(false);
 		Thread.sleep(delay);
 	}
-	//assigns morse code to letters with appropriate delay
+	//Assigns Morse code to letters with appropriate delay
 	public static void A() throws Exception
 	{
 		dot();
