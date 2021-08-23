@@ -160,6 +160,7 @@ public class MorseEncoder {
 			if (word.charAt(i) == ' ')//7 units of delay between words
 			{
 				Thread.sleep(delay * 7);
+				System.out.print("/ ");
 			}
 			else
 			{
