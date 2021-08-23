@@ -3,7 +3,7 @@ from Phidget22.Devices.DigitalInput import *
 from Phidget22.Devices.DigitalOutput import *
 #Required for sleep statement 
 import time
-#integer for unit of delay
+#Integer for unit of delay
 delay = 0.25
 #Create
 greenLED = DigitalOutput()
