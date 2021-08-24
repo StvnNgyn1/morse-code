@@ -26,7 +26,7 @@ namespace MorseEncoder
             Console.WriteLine("Translating... Look at the green LED." + "\n");
             System.Threading.Thread.Sleep(2000);
 			//Looks through user unput and translates it to morse code.
-			for (int i = 0; i < word.Length; i++)
+            for (int i = 0; i < word.Length; i++)
 			{
 				if (word[i] == 'a')
 				{
@@ -163,14 +163,14 @@ namespace MorseEncoder
 					System.Threading.Thread.Sleep(delay * 7);
 					Console.Write("/ ");
 				}
-                else
+				else
                 {
 					System.Threading.Thread.Sleep(delay * 3);
                 }
 			}
-
 		}
-        public static void dot() //Light instruction for a dot of Morse code
+
+		public static void dot() //Light instruction for a dot of Morse code
         {
             Console.Write(".");
             greenLED.State = true;
@@ -178,8 +178,7 @@ namespace MorseEncoder
             greenLED.State = false;
             System.Threading.Thread.Sleep(delay);
         }
-
-        public static void dash() //Light instruction for a dash of Morse code
+		public static void dash() //Light instruction for a dash of Morse code
         {
             Console.Write("-");
             greenLED.State = true;
@@ -195,6 +194,7 @@ namespace MorseEncoder
 			dash();
 			System.Threading.Thread.Sleep(delay);
 		}
+
 		public static void B()
 		{
 			dash();
@@ -206,7 +206,7 @@ namespace MorseEncoder
 			dot();
 			System.Threading.Thread.Sleep(delay);
 		}
-
+		
 		public static void C()
 		{
 			dash();
@@ -218,7 +218,6 @@ namespace MorseEncoder
 			dot();
 			System.Threading.Thread.Sleep(delay);
 		}
-
 		public static void D()
 		{
 			dash();
