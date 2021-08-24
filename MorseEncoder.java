@@ -1,203 +1,149 @@
 import com.phidget22.*;
 import java.util.Scanner;
+
 public class MorseEncoder {
-	//Global variable for greenLED
+	// Global variable for greenLED
 	static DigitalOutput greenLED;
-	//Global integer for unit of delay.
+	// Global integer for unit of delay.
 	static int delay = 250;
-	//Handle Exceptions
-	public static void main(String[] args) throws Exception
-	{
+
+	// Handle Exceptions
+	public static void main(String[] args) throws Exception {
 		Scanner scan = new Scanner(System.in);
-		//Create
+		// Create
 		greenLED = new DigitalOutput();
-		
-		//Address
+
+		// Address
 		greenLED.setHubPort(4);
 		greenLED.setIsHubPortDevice(true);
-		
-		//Open
+
+		// Open
 		greenLED.open(1000);
-		
-		//Use your Phidgets
+
+		// Use your Phidgets
 		System.out.println("Enter the word you would like to encode:");
 		String userInput = scan.nextLine();
 		String word = userInput.toLowerCase();
 		System.out.print("Translating... Look at the green LED." + "\n");
 		Thread.sleep(2000);
-		for (int i = 0; i < word.length(); i++)
-		{
-			if (word.charAt(i) == 'a')
-			{
+		for (int i = 0; i < word.length(); i++) {
+			if (word.charAt(i) == 'a') {
 				A();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'b')
-			{
+			} else if (word.charAt(i) == 'b') {
 				B();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'c')
-			{
+			} else if (word.charAt(i) == 'c') {
 				C();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'd')
-			{
+			} else if (word.charAt(i) == 'd') {
 				D();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'e')
-			{
+			} else if (word.charAt(i) == 'e') {
 				E();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'f')
-			{
+			} else if (word.charAt(i) == 'f') {
 				F();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'g')
-			{
+			} else if (word.charAt(i) == 'g') {
 				G();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'h')
-			{
+			} else if (word.charAt(i) == 'h') {
 				H();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'i')
-			{
+			} else if (word.charAt(i) == 'i') {
 				I();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'j')
-			{
+			} else if (word.charAt(i) == 'j') {
 				J();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'k')
-			{
+			} else if (word.charAt(i) == 'k') {
 				K();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'l')
-			{
+			} else if (word.charAt(i) == 'l') {
 				L();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'm')
-			{
+			} else if (word.charAt(i) == 'm') {
 				M();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'n')
-			{
+			} else if (word.charAt(i) == 'n') {
 				N();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'o')
-			{
+			} else if (word.charAt(i) == 'o') {
 				O();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'p')
-			{
+			} else if (word.charAt(i) == 'p') {
 				P();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'q')
-			{
+			} else if (word.charAt(i) == 'q') {
 				Q();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'r')
-			{
+			} else if (word.charAt(i) == 'r') {
 				R();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 's')
-			{
+			} else if (word.charAt(i) == 's') {
 				S();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 't')
-			{
+			} else if (word.charAt(i) == 't') {
 				T();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'u')
-			{
+			} else if (word.charAt(i) == 'u') {
 				U();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'v')
-			{
+			} else if (word.charAt(i) == 'v') {
 				V();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'w')
-			{
+			} else if (word.charAt(i) == 'w') {
 				W();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'x')
-			{
+			} else if (word.charAt(i) == 'x') {
 				X();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'y')
-			{
+			} else if (word.charAt(i) == 'y') {
 				Y();
 				System.out.print(" ");
-			}
-			else if (word.charAt(i) == 'z')
-			{
+			} else if (word.charAt(i) == 'z') {
 				Z();
 				System.out.print(" ");
 			}
-			if (word.charAt(i) == ' ')//7 units of delay between words
+			if (word.charAt(i) == ' ')// 7 units of delay between words
 			{
 				Thread.sleep(delay * 7);
 				System.out.print("/ ");
-			}
-			else
-			{
-				Thread.sleep(delay * 3);//3 units between letters
+			} else {
+				Thread.sleep(delay * 3);// 3 units between letters
 			}
 		}
-		
+
 	}
-	//Light instruction for a dot of Morse code
-	public static void dot() throws Exception
-	{
+
+	// Light instruction for a dot of Morse code
+	public static void dot() throws Exception {
 		System.out.print(".");
 		greenLED.setState(true);
 		Thread.sleep(delay);
 		greenLED.setState(false);
 		Thread.sleep(delay);
 	}
-	//Light instruction for a dash of Morse code
-	public static void dash() throws Exception
-	{
+
+	// Light instruction for a dash of Morse code
+	public static void dash() throws Exception {
 		System.out.print("-");
 		greenLED.setState(true);
 		Thread.sleep(delay * 3);
 		greenLED.setState(false);
 		Thread.sleep(delay);
 	}
-	//Assigns Morse code to letters with appropriate delay
-	public static void A() throws Exception
-	{
+
+	// Assigns Morse code to letters with appropriate delay
+	public static void A() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dash();
 		Thread.sleep(delay);
 	}
-	
-	public static void B() throws Exception
-	{
+
+	public static void B() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dot();
@@ -207,9 +153,8 @@ public class MorseEncoder {
 		dot();
 		Thread.sleep(delay);
 	}
-	
-	public static void C() throws Exception
-	{
+
+	public static void C() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dot();
@@ -220,8 +165,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void D() throws Exception
-	{
+	public static void D() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dot();
@@ -230,14 +174,12 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void E() throws Exception
-	{
+	public static void E() throws Exception {
 		dot();
 		Thread.sleep(delay);
 	}
 
-	public static void F() throws Exception
-	{
+	public static void F() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dot();
@@ -248,8 +190,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void G() throws Exception
-	{
+	public static void G() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dash();
@@ -258,28 +199,25 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void H() throws Exception
-	{
+	public static void H() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dot();
 		Thread.sleep(delay);
-		dot();
-		Thread.sleep(delay);
-		dot();
-		Thread.sleep(delay);
-	}
-	
-	public static void I() throws Exception
-	{
 		dot();
 		Thread.sleep(delay);
 		dot();
 		Thread.sleep(delay);
 	}
 
-	public static void J() throws Exception
-	{
+	public static void I() throws Exception {
+		dot();
+		Thread.sleep(delay);
+		dot();
+		Thread.sleep(delay);
+	}
+
+	public static void J() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dash();
@@ -290,8 +228,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void K() throws Exception
-	{
+	public static void K() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dot();
@@ -300,8 +237,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void L() throws Exception
-	{
+	public static void L() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dash();
@@ -312,24 +248,21 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void M() throws Exception
-	{
+	public static void M() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dash();
 		Thread.sleep(delay);
 	}
 
-	public static void N() throws Exception
-	{
+	public static void N() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dot();
 		Thread.sleep(delay);
 	}
 
-	public static void O() throws Exception
-	{
+	public static void O() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dash();
@@ -338,8 +271,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void P() throws Exception
-	{
+	public static void P() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dash();
@@ -349,8 +281,7 @@ public class MorseEncoder {
 		dot();
 	}
 
-	public static void Q() throws Exception
-	{
+	public static void Q() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dash();
@@ -361,8 +292,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void R() throws Exception
-	{
+	public static void R() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dash();
@@ -371,8 +301,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void S() throws Exception
-	{
+	public static void S() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dot();
@@ -380,17 +309,13 @@ public class MorseEncoder {
 		dot();
 		Thread.sleep(delay);
 	}
-	
 
-	public static void T() throws Exception
-	{
+	public static void T() throws Exception {
 		dash();
 		Thread.sleep(delay);
 	}
-	
 
-	public static void U() throws Exception
-	{
+	public static void U() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dot();
@@ -398,10 +323,8 @@ public class MorseEncoder {
 		dash();
 		Thread.sleep(delay);
 	}
-	
 
-	public static void V() throws Exception
-	{
+	public static void V() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dot();
@@ -411,10 +334,8 @@ public class MorseEncoder {
 		dash();
 		Thread.sleep(delay);
 	}
-	
 
-	public static void W() throws Exception
-	{
+	public static void W() throws Exception {
 		dot();
 		Thread.sleep(delay);
 		dash();
@@ -422,10 +343,8 @@ public class MorseEncoder {
 		dash();
 		Thread.sleep(delay);
 	}
-	
 
-	public static void X() throws Exception
-	{
+	public static void X() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dot();
@@ -435,10 +354,8 @@ public class MorseEncoder {
 		dash();
 		Thread.sleep(delay);
 	}
-	
 
-	public static void Y() throws Exception
-	{
+	public static void Y() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dot();
@@ -449,8 +366,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	public static void Z() throws Exception
-	{
+	public static void Z() throws Exception {
 		dash();
 		Thread.sleep(delay);
 		dash();
