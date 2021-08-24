@@ -164,9 +164,9 @@ namespace MorseEncoder
 					Console.Write("/ ");
 				}
 				else
-                {
+				{
 					System.Threading.Thread.Sleep(delay * 3);
-                }
+				}
 			}
 		}
 
