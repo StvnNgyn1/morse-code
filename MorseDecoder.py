@@ -43,12 +43,19 @@ def onRedButton_StateChange(self, state):
 def onGreenButton_StateChange(self, state):
     global startPress #Tells function to use global variables for startPress and timePressed
     global timePressed
+    global userInput
     greenLED.setState(state) #Turns on green LED
     if (state):
         startPress = currentTime() #Grabs time when the button is first pressed
     if(state == False):
-        timePressed = ((currentTime() - startPress) / 1000) #Grabs time when button is released. startPress subtracted from timePressed. Converts from ms to seconds.
-
+        timePressed = ((currentTime() - startPress)) #Grabs time when button is released, startPress subtracted.
+    if ((timePressed < 600) and (timePressed > 100)):
+        print(".", end = '') #Prints dot to screen
+        userInput+= "."
+    elif (timePressed > 600):
+        print("-", end = '') #Prints dash to screen
+        userInput+= "-"
+        
 #Create
 redButton = DigitalInput()
 redLED = DigitalOutput()
@@ -76,14 +83,5 @@ redButton.setOnStateChangeHandler(onRedButton_StateChange)
 greenButton.setOnStateChangeHandler(onGreenButton_StateChange)
 
 print("Start entering into the decoder." + "\n" + "Press the green button for a dot, hold for a dash." + "\n" + "Press the red button after you enter a letter.")
-while(True): #According to howl ong user holds button down for, add a dot or dash to userInput. Also print to screen. 
+while(True): #According to how long user holds button down for, add a dot or dash to userInput. Also print to screen.
     timePressed = 0
-    time.sleep(0) #Line of code needed here, as without it, the code will become very inconsistent.
-    if ((timePressed < 0.6) and (timePressed > 0.1)):
-        print(".", end = '') #Prints dot to screen
-        userInput+= "."
-    elif (timePressed > 0.6):
-        print("-", end = '') #Prints dash to screen
-        userInput+= "-"
-
-    
