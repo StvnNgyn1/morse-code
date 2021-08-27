@@ -1,5 +1,6 @@
-﻿using System;
+﻿//Add Phidgets Library
 using Phidget22;
+using System.Diagnostics;
 
 namespace MorseDecoder
 {
@@ -9,22 +10,22 @@ namespace MorseDecoder
         static bool turnRedLEDOn = false;
         static bool turnGreenLEDOn = false;
 
-        //Global variables to hold times.
-        static long startPress;
+        //Global variables to hold times and the stopwatch
         static double timePressed;
+        static Stopwatch stopwatch = new Stopwatch();
 
         //Global variable for the userInput
         static string userInput = "";
         //Decoder method that will take the user input (code) and loop it through the morseCode array, looking for a match.
         static char Decoder(string code)
         {
-            String[] morseCode = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", "Unknown Code" };
+            System.String[] morseCode = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", "Unknown Code" };
             int i = 0;
             while (morseCode[i].Equals("Unknown Code") == false)
             {
-                if (code.Equals(morseCode[i])) //Once a match is found, the method will return the character corresponding to that code.
-                {
-                    return Char.ToUpper((char)(97 + i)); //Character 'a' starts at 97.
+                if (code.Equals(morseCode[i]))
+                { //Once a match is found, the method will return the character corresponding to that code. 
+                    return System.Char.ToUpper((char)(97 + i)); //Character 'a' starts at 97.
                 }
                 i++;
             }
@@ -34,11 +35,11 @@ namespace MorseDecoder
         private static void redButton_StateChange(object sender, Phidget22.Events.DigitalInputStateChangeEventArgs e)
         {
             turnRedLEDOn = e.State; //Turns on red LED
-            if (e.State) //Once red button is pushed, Decoder methid is called for the users input.
-            {
-                Console.Write(" = ");
-                Console.Write(Decoder(userInput));
-                Console.WriteLine();
+            if (e.State)
+            { //Once red button is pushed, Decoder methid is called for the users input.
+                System.Console.Write(" = ");
+                System.Console.Write(Decoder(userInput));
+                System.Console.WriteLine();
                 userInput = ""; //Clears userInput for next code
             }
         }
@@ -48,15 +49,29 @@ namespace MorseDecoder
             turnGreenLEDOn = e.State; //Turns on green LED
             if (e.State)
             {
-                startPress = Environment.TickCount; //Grab time when the button is first pressed
+                stopwatch.Start(); //Grab time when the button is first pressed
             }
             if (e.State == false)
             {
-                timePressed = ((double)(Environment.TickCount - startPress) / 1000); //Grabs time when the button is released, and suctracts start time. Converts from ms to seconds.
+                timePressed = (stopwatch.ElapsedMilliseconds); //Grabs time when the button is released, and suctracts start time.
+                stopwatch.Reset();
+            }
+            if (timePressed < 600 && timePressed > 100)
+            {
+                userInput += ".";
+                System.Console.Write("."); //Prints a dot to the screen
+            }
+            else if ((timePressed > 600) && (timePressed < 5000))
+            {
+                userInput += "-";
+                System.Console.Write("-"); //Prints a dash to the screen     
             }
         }
         static void Main(string[] args)
         {
+            //Create stopwatch
+            stopwatch = new Stopwatch();
+
             //Create
             DigitalInput redButton = new DigitalInput();
             DigitalOutput redLED = new DigitalOutput();
@@ -83,22 +98,12 @@ namespace MorseDecoder
             greenButton.Open(1000);
             greenLED.Open(1000);
 
-            Console.WriteLine("Start entering into the decoder." + "\n" + "Press the green button for a dot, hold for a dash." + "\n" + "Press the red button after you enter a letter.");
-            while (true) //According to how long the user holds the button down for, it will add a dot or a dash to the userInput string. Also controls LEDS
-            {
+            System.Console.WriteLine("Start entering into the decoder." + "\n" + "Press the green button for a dot, hold for a dash." + "\n" + "Press the red button after you enter a letter.");
+            while (true)
+            { //According to how long the user holds the button down for, it will add a dot or a dash to the userInput string. Also controls LEDS
                 timePressed = 0;
                 redLED.State = turnRedLEDOn;
                 greenLED.State = turnGreenLEDOn;
-                if (timePressed < 0.6 && timePressed > 0.1)
-                {
-                    userInput += ".";
-                    Console.Write("."); //Prints a dot to the screen
-                }
-                else if (timePressed > 0.6)
-                {
-                    userInput += "-";
-                    Console.Write("-"); //Prints a dash to the screen
-                }
             }
         }
 
