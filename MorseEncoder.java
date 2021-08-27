@@ -1,26 +1,27 @@
+//Add Phidgets Library
 import com.phidget22.*;
 import java.util.Scanner;
 
 public class MorseEncoder {
-	// Global variable for greenLED
+	//Global variable for greenLED
 	static DigitalOutput greenLED;
-	// Global integer for unit of delay.
+	//Global integer for unit of delay.
 	static int delay = 250;
 
-	// Handle Exceptions
+	//Handle Exceptions
 	public static void main(String[] args) throws Exception {
 		Scanner scan = new Scanner(System.in);
-		// Create
+		//Create
 		greenLED = new DigitalOutput();
 
-		// Address
+		//Address
 		greenLED.setHubPort(4);
 		greenLED.setIsHubPortDevice(true);
 
-		// Open
+		//Open
 		greenLED.open(1000);
 
-		// Use your Phidgets
+		//Use your Phidgets
 		System.out.println("Enter the word you would like to encode:");
 		String userInput = scan.nextLine();
 		String word = userInput.toLowerCase();
@@ -106,18 +107,18 @@ public class MorseEncoder {
 				Z();
 				System.out.print(" ");
 			}
-			if (word.charAt(i) == ' ')// 7 units of delay between words
+			if (word.charAt(i) == ' ')//7 units of delay between words
 			{
 				Thread.sleep(delay * 7);
 				System.out.print("/ ");
 			} else {
-				Thread.sleep(delay * 3);// 3 units between letters
+				Thread.sleep(delay * 3);//3 units between letters
 			}
 		}
 
 	}
 
-	// Light instruction for a dot of Morse code
+	//Light instruction for a dot of Morse code
 	public static void dot() throws Exception {
 		System.out.print(".");
 		greenLED.setState(true);
@@ -126,7 +127,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	// Light instruction for a dash of Morse code
+	//Light instruction for a dash of Morse code
 	public static void dash() throws Exception {
 		System.out.print("-");
 		greenLED.setState(true);
@@ -135,7 +136,7 @@ public class MorseEncoder {
 		Thread.sleep(delay);
 	}
 
-	// Assigns Morse code to letters with appropriate delay
+	//Assigns Morse code to letters with appropriate delay
 	public static void A() throws Exception {
 		dot();
 		Thread.sleep(delay);
