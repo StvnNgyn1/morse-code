@@ -1,15 +1,16 @@
-﻿using System;
+﻿//Add Phidgets Library
 using Phidget22;
+
 namespace MorseEncoder
 {
-    class MorseCode
-    {	//Global variable for the greenLED
+    class MorseCode{//Global variable for the greenLED
+
         static DigitalOutput greenLED;
         //Global integer for the unit of delay
         static int delay = 250;
 
-        static void Main(string[] args)
-        {
+        static void Main(string[] args){
+
             //Create
             greenLED = new DigitalOutput();
 
@@ -20,183 +21,151 @@ namespace MorseEncoder
             //Open
             greenLED.Open(1000);
 
-            Console.WriteLine("Enter the word you would like to encode:");
-            string userInput = Console.ReadLine();
+            System.Console.WriteLine("Enter the word you would like to encode:");
+            string userInput = System.Console.ReadLine();
             string word = userInput.ToLower();
-            Console.WriteLine("Translating... Look at the green LED." + "\n");
+            System.Console.WriteLine("Translating... Look at the green LED." + "\n");
             System.Threading.Thread.Sleep(2000);
             //Looks through user unput and translates it to morse code.
-            for (int i = 0; i < word.Length; i++)
-            {
-                if (word[i] == 'a')
-                {
+            for (int i = 0; i < word.Length; i++){
+
+                if (word[i] == 'a'){
                     A();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'b')
-                {
+                else if (word[i] == 'b'){
                     B();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'c')
-                {
+                else if (word[i] == 'c'){
                     C();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'd')
-                {
+                else if (word[i] == 'd'){
                     D();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'e')
-                {
+                else if (word[i] == 'e'){
                     E();
-                    Console.Write(" ");
-                }
-                else if (word[i] == 'f')
-                {
+                    System.Console.Write(" ");}
+                else if (word[i] == 'f'){
                     F();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'g')
-                {
+                else if (word[i] == 'g'){
                     G();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'h')
-                {
+                else if (word[i] == 'h'){
                     H();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'i')
-                {
+                else if (word[i] == 'i'){
                     I();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'j')
-                {
+                else if (word[i] == 'j'){
                     J();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'k')
-                {
+                else if (word[i] == 'k'){
                     K();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'l')
-                {
+                else if (word[i] == 'l'){
                     L();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'm')
-                {
+                else if (word[i] == 'm'){
                     M();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'n')
-                {
+                else if (word[i] == 'n'){
                     N();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'o')
-                {
+                else if (word[i] == 'o'){
                     O();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'p')
-                {
+                else if (word[i] == 'p'){
                     P();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'q')
-                {
+                else if (word[i] == 'q'){
                     Q();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'r')
-                {
+                else if (word[i] == 'r'){
                     R();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 's')
-                {
+                else if (word[i] == 's'){
                     S();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 't')
-                {
+                else if (word[i] == 't'){
                     T();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'u')
-                {
+                else if (word[i] == 'u'){
                     U();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'v')
-                {
+                else if (word[i] == 'v'){
                     V();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'w')
-                {
+                else if (word[i] == 'w'){
                     W();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'x')
-                {
+                else if (word[i] == 'x'){
                     X();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'y')
-                {
+                else if (word[i] == 'y'){
                     Y();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                else if (word[i] == 'z')
-                {
+                else if (word[i] == 'z'){
                     Z();
-                    Console.Write(" ");
+                    System.Console.Write(" ");
                 }
-                if (word[i] == ' ')//7 units of delay between words
-                {
+                if (word[i] == ' '){//7 units of delay between words
                     System.Threading.Thread.Sleep(delay * 7);
-                    Console.Write("/ ");
+                    System.Console.Write("/ ");
                 }
-                else
-                {
+                else{
                     System.Threading.Thread.Sleep(delay * 3);
                 }
             }
         }
 
-        public static void dot() //Light instruction for a dot of Morse code
-        {
-            Console.Write(".");
+        //Use your Phidgets
+        public static void dot(){ //Light instruction for a dot of Morse code
+            System.Console.Write(".");
             greenLED.State = true;
             System.Threading.Thread.Sleep(delay);
             greenLED.State = false;
             System.Threading.Thread.Sleep(delay);
         }
-        public static void dash() //Light instruction for a dash of Morse code
-        {
-            Console.Write("-");
+        public static void dash(){ //Light instruction for a dash of Morse code
+            System.Console.Write("-");
             greenLED.State = true;
             System.Threading.Thread.Sleep(delay * 3);
             greenLED.State = false;
             System.Threading.Thread.Sleep(delay);
         }
         //Assigns Morse Code to the letters with the delay needed.
-        public static void A()
-        {
+        public static void A(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dash();
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void B()
-        {
+        public static void B(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -207,8 +176,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void C()
-        {
+        public static void C(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -218,8 +186,7 @@ namespace MorseEncoder
             dot();
             System.Threading.Thread.Sleep(delay);
         }
-        public static void D()
-        {
+        public static void D(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -228,14 +195,12 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void E()
-        {
+        public static void E(){
             dot();
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void F()
-        {
+        public static void F(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -246,8 +211,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void G()
-        {
+        public static void G(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -256,8 +220,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void H()
-        {
+        public static void H(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -268,16 +231,14 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void I()
-        {
+        public static void I(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dot();
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void J()
-        {
+        public static void J(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -288,8 +249,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void K()
-        {
+        public static void K(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -298,8 +258,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void L()
-        {
+        public static void L(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -310,24 +269,21 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void M()
-        {
+        public static void M(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dash();
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void N()
-        {
+        public static void N(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dot();
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void O()
-        {
+        public static void O(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -336,8 +292,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void P()
-        {
+        public static void P(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -347,8 +302,7 @@ namespace MorseEncoder
             dot();
         }
 
-        public static void Q()
-        {
+        public static void Q(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -359,8 +313,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void R()
-        {
+        public static void R(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -369,8 +322,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void S()
-        {
+        public static void S(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -379,16 +331,12 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-
-        public static void T()
-        {
+        public static void T(){
             dash();
             System.Threading.Thread.Sleep(delay);
         }
 
-
-        public static void U()
-        {
+        public static void U(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -397,9 +345,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-
-        public static void V()
-        {
+        public static void V(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -410,9 +356,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-
-        public static void W()
-        {
+        public static void W(){
             dot();
             System.Threading.Thread.Sleep(delay);
             dash();
@@ -421,9 +365,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-
-        public static void X()
-        {
+        public static void X(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -434,9 +376,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-
-        public static void Y()
-        {
+        public static void Y(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dot();
@@ -447,8 +387,7 @@ namespace MorseEncoder
             System.Threading.Thread.Sleep(delay);
         }
 
-        public static void Z()
-        {
+        public static void Z(){
             dash();
             System.Threading.Thread.Sleep(delay);
             dash();
