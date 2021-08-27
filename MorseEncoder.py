@@ -1,3 +1,4 @@
+#Add Phidgets Library
 from Phidget22.Phidget import *
 from Phidget22.Devices.DigitalInput import *
 from Phidget22.Devices.DigitalOutput import *
@@ -5,6 +6,7 @@ from Phidget22.Devices.DigitalOutput import *
 import time
 #Integer for unit of delay
 delay = 0.25
+
 #Create
 greenLED = DigitalOutput()
 
@@ -15,6 +17,7 @@ greenLED.setIsHubPortDevice(True)
 #Open
 greenLED.openWaitForAttachment(1000)
 
+#Use your Phidgets
 #Light instruction for a dot of Morse Code
 def dot():
     print(".", end = ' ')
